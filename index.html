@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness Tracker App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .screen {
+      max-width: 400px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label, input, select, button {
+      display: block;
+      width: 100%;
+    }
+    input, select {
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .dashboard-item {
+      background: #e0f7fa;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Screen -->
+  <div class="screen" id="screen1">
+    <h2>Login</h2>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" />
+    </div>
+    <button onclick="goToScreen(2)">Log In</button>
+  </div>
+
+  <!-- Permissions Screen -->
+  <div class="screen" id="screen2" style="display:none">
+    <h2>Health Data Access</h2>
+    <p>Allow access to:</p>
+    <div class="form-group">
+      <label><input type="checkbox" checked /> Steps</label>
+      <label><input type="checkbox" checked /> Calories</label>
+      <label><input type="checkbox" checked /> Heart Rate</label>
+      <label><input type="checkbox" checked /> Sleep</label>
+    </div>
+    <button onclick="goToScreen(3)">Allow Access</button>
+  </div>
+
+  <!-- Dashboard Screen -->
+  <div class="screen" id="screen3" style="display:none">
+    <h2>Dashboard</h2>
+    <div class="dashboard-item">Steps: 7,856</div>
+    <div class="dashboard-item">Calories: 450</div>
+    <div class="dashboard-item">Heart Rate: 102</div>
+    <button onclick="goToScreen(4)">Log Workout</button>
+  </div>
+
+  <!-- Log Workout Screen -->
+  <div class="screen" id="screen4" style="display:none">
+    <h2>Log Workout</h2>
+    <div class="form-group">
+      <label>Workout Type</label>
+      <select>
+        <option>Cardio</option>
+        <option>Strength Training</option>
+        <option>Yoga</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Duration (mins)</label>
+      <input type="number" placeholder="Enter duration" />
+    </div>
+    <div class="form-group">
+      <label>Calories Burned</label>
+      <input type="number" placeholder="Enter calories burned" />
+    </div>
+    <button onclick="alert('Workout logged!')">Save</button>
+  </div>
+
+  <script>
+    function goToScreen(screenNumber) {
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById('screen' + i).style.display = 'none';
+      }
+      document.getElementById('screen' + screenNumber).style.display = 'block';
+    }
+  </script>
+</body>
+</html>
